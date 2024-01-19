@@ -1,0 +1,40 @@
+from myapp.models import Movie
+
+Movie.objects.create(name="MalaikottaiVaalibhavan",language="Malayalam",run_time=125,director="LJP",genre="Action",actors="Mohanlal",year=2024)
+
+Movie.objects.create(name="Turbo",language="Malayalam",run_time=120,director="Vyshak",genre="Action",actors="Mammootty",year=2025)
+
+Movie.objects.create(name="KGF",language="Telugu",run_time=130,director="Prasanth",genre="Action",actors="Yash",year=2023)
+
+Movie.objects.create(name="Vikram",language="Tamil",run_time=127,director="lokesh",genre="Action",actors="Kamalhassan",year=2023)
+
+Movie.objects.create(name="Neru",language="Malayalam",run_time=122,director="Jeethu",genre="Crime",actors="Mohanlal",year=2023)
+
+
+update query
+--------------
+Movie.objects.filter(id=1).update(director="Lijo",genre="Drama")
+
+delete query
+--------------
+
+Movie.objects.filter(id=5).delete()
+
+field lookup
+--------------
+<   __lt
+<=  __lte
+>   __gt
+>=  __gte
+
+Movie.objects.filter(year__gte=2024)
+Movie.objects.filter(year__lte=2024)
+Movie.objects.filter(year__lt=2024)
+
+exclude
+-----------
+
+Movie.objects.exclude(language="Tamil")
+
+
+Movie.objects.all().values_list("genre")

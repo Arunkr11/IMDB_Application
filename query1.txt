@@ -1,0 +1,55 @@
+--->Creating Employee with given data<---
+
+Employee.objects.create(manager_Id=1,name="Älex Smith",department="Admin",salary=90000,city="boulder")
+Employee.objects.create(manager_Id=1,name="Amy Mars",department="Admin",salary=50000,city="Longmont")       
+Employee.objects.create(manager_Id=1,name="Logan Mars",department="Admin",salary=70000,city="Longmont")     
+Employee.objects.create(manager_Id=1,name="James Mont",department="Marketing",salary=55000,city="")         
+Employee.objects.create(manager_Id=6,name="John Smith",department="Marketing",salary=60000,city="Boulder")   
+Employee.objects.create(manager_Id=6,name="Lily Mars",department="Marketing",salary=95000,city="")          
+Employee.objects.create(manager_Id=6,name="Ravi Grace",department="Database",salary=75000,city="Longmont")  
+Employee.objects.create(manager_Id=6,name="Tara Frank",department="Database",salary=80000,city="Longmont")  
+Employee.objects.create(manager_Id=6,name="Tom Ford",department="Database",salary=65000,city="")
+Employee.objects.create(manager_Id=6,name="William Cruze",department="Database",salary=85000,city="Longmont")
+
+    --->Viewing all Employee<---
+
+qs=Employee.objects.all()
+qs
+
+    --->For Viewing a Employee<---
+
+qs=Employee.objects.get(id=8)
+qs
+
+    --->For Viewing all Employees in a Specific department
+
+qs=Employee.objects.filter(department="Marketing")
+qs
+
+    --->Updating a Value<---
+
+Employee.objects.filter(id=1).update(name="Alex Smith")
+
+    --->Deleting a Data<---
+
+Employee.objects.filter(id=4).delete()
+
+    --->Employee with salary range between 50k-70k<---
+
+Employee.objects.filter(salary_gt=50000,salary_lt=70000)
+
+    --->Employee with salary greater than or equal to 65000<---
+
+Employee.objects.filter(salary__gte=65000)
+
+    --->Employee with salary less than or equal to 65000<---
+
+Employee.objects.filter(salary__lte=65000)
+
+    --->All Employees excluding employees in Admin Department<---
+
+Employee.objects.exclude(department="Admin")
+
+    --->Listing all departments<---
+
+Employee.objects.all().values_list("department",flat=True).distinct()
