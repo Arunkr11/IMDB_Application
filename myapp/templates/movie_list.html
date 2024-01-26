@@ -21,6 +21,7 @@
                     <th>director</th>
                     <th>actors</th>
                     <th>year</th>
+                    <th>action</th>
                 </tr>
                 <tr>
                     {% for m in data %}
@@ -31,6 +32,11 @@
                     <td>{{m.director}}</td>
                     <td>{{m.actors}}</td>
                     <td>{{m.year}}</td>
+                    <td>
+                        <a href="{%url 'movie-detail' m.id%}" class="btn btn-outline-info">View</a>
+                        <a href="{%url 'movie-delete' m.id%}" class="btn btn-outline-danger">Remove</a>
+                        <a href="{%url 'movie-update' m.id%}" class="btn btn-outline-warning">Update</a>
+                    </td>
                 </tr>
                 {%endfor%}
             </table>
